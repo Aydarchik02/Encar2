@@ -1,0 +1,3575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Encar.tm.avto — автомобили, Changan Uni-Z и заказ автомобилей из Южной Кореи. Подбор, консультация и доставка.">
+
+    <meta name="author" content="Encar.tm.avto">
+
+    <title>Encar.tm.avto — Автомобили из Кореи и Changan</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --primary: #1557ff;
+            --primary-dark: #0d3fc2;
+            --secondary: #ff3b30;
+            --accent: #ffc107;
+
+            --dark: #101828;
+            --dark-2: #1d2939;
+
+            --gray: #667085;
+            --gray-light: #98a2b3;
+
+            --light: #f5f7fa;
+            --white: #ffffff;
+
+            --green: #25d366;
+            --telegram: #229ed9;
+
+            --border: #e4e7ec;
+
+            --shadow-sm: 0 4px 15px rgba(16, 24, 40, .06);
+            --shadow-md: 0 10px 30px rgba(16, 24, 40, .10);
+            --shadow-lg: 0 20px 60px rgba(16, 24, 40, .16);
+
+            --radius: 18px;
+            --transition: .3s ease;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+        button {
+            border: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           PRELOADER
+        ========================================================= */
+
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            z-index: 99999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: .5s ease;
+        }
+
+        .preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 55px;
+            height: 55px;
+
+            border: 5px solid #e9eefc;
+            border-top-color: var(--primary);
+
+            border-radius: 50%;
+
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255,255,255,.95);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(0,0,0,.05);
+
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            font-weight: 900;
+            font-size: 24px;
+
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+
+            display: grid;
+            place-items: center;
+
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #4791ff
+            );
+
+            color: #fff;
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 8px 20px rgba(21,87,255,.25);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo small {
+            color: var(--secondary);
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .nav {
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .nav a {
+            font-size: 14px;
+            font-weight: 600;
+
+            color: var(--dark-2);
+
+            position: relative;
+
+            transition: var(--transition);
+        }
+
+        .nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--primary);
+
+            transition: var(--transition);
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           HEADER ACTIONS
+        ========================================================= */
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .header-phone i {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            background: var(--light);
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 14px 23px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            color: #fff;
+
+            background: var(--primary);
+
+            box-shadow:
+                0 8px 25px rgba(21,87,255,.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(21,87,255,.32);
+        }
+
+        .btn-outline {
+            color: var(--primary);
+
+            background: transparent;
+
+            border-color: rgba(21,87,255,.25);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--dark);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1db954;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 780px;
+
+            padding-top: 82px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5,13,30,.95) 0%,
+                    rgba(5,13,30,.78) 42%,
+                    rgba(5,13,30,.22) 100%
+                ),
+                url("https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=2000&q=85")
+                center / cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -180px;
+            top: 100px;
+
+            background: rgba(21,87,255,.25);
+
+            filter: blur(100px);
+
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 750px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            border: 1px solid rgba(255,255,255,.18);
+
+            background: rgba(255,255,255,.09);
+
+            border-radius: 100px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-bottom: 22px;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge i {
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 76px);
+
+            line-height: 1.04;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #6ea0ff;
+        }
+
+        .hero-description {
+            color: rgba(255,255,255,.82);
+
+            font-size: 18px;
+
+            max-width: 650px;
+
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .hero-stats {
+            margin-top: 55px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 40px;
+        }
+
+        .hero-stat strong {
+            display: block;
+
+            font-size: 27px;
+
+            line-height: 1.1;
+        }
+
+        .hero-stat span {
+            color: rgba(255,255,255,.65);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
+
+        section {
+            position: relative;
+        }
+
+        .section {
+            padding: 105px 0;
+        }
+
+        .section-header {
+            max-width: 700px;
+
+            margin: 0 auto 55px;
+
+            text-align: center;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: var(--primary);
+
+            background: #edf3ff;
+
+            padding: 7px 13px;
+
+            border-radius: 100px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .8px;
+
+            margin-bottom: 13px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(30px, 4vw, 45px);
+
+            line-height: 1.15;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================================
+           FEATURES
+        ========================================================= */
+
+        .features {
+            background: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .feature-card {
+            padding: 35px 30px;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            background: #fff;
+
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: var(--shadow-md);
+
+            border-color: transparent;
+        }
+
+        .feature-icon {
+            width: 58px;
+            height: 58px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 15px;
+
+            background: #edf3ff;
+
+            color: var(--primary);
+
+            font-size: 22px;
+
+            margin-bottom: 22px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           CHANGAN
+        ========================================================= */
+
+        .changan {
+            background: #f6f8fc;
+
+            overflow: hidden;
+        }
+
+        .car-showcase {
+            display: grid;
+
+            grid-template-columns:
+                1.1fr .9fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .car-image {
+            position: relative;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow-lg);
+
+            background: #e8edf7;
+        }
+
+        .car-image img {
+            width: 100%;
+
+            aspect-ratio: 4 / 3;
+
+            object-fit: cover;
+
+            transition: transform .6s ease;
+        }
+
+        .car-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .car-badge {
+            position: absolute;
+
+            left: 20px;
+            top: 20px;
+
+            padding: 8px 13px;
+
+            border-radius: 100px;
+
+            background: #fff;
+
+            color: var(--primary);
+
+            font-weight: 800;
+
+            font-size: 12px;
+
+            box-shadow: var(--shadow-sm);
+
+            z-index: 2;
+        }
+
+        .car-content .section-label {
+            margin-bottom: 15px;
+        }
+
+        .car-content h2 {
+            font-size: clamp(32px, 4vw, 48px);
+
+            line-height: 1.1;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 18px;
+        }
+
+        .car-content > p {
+            color: var(--gray);
+
+            margin-bottom: 25px;
+        }
+
+        .specs {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 28px;
+        }
+
+        .spec {
+            display: flex;
+
+            gap: 12px;
+
+            align-items: center;
+
+            padding: 14px;
+
+            background: #fff;
+
+            border-radius: 13px;
+
+            border: 1px solid var(--border);
+        }
+
+        .spec i {
+            color: var(--primary);
+
+            font-size: 17px;
+
+            width: 24px;
+        }
+
+        .spec strong {
+            display: block;
+
+            font-size: 13px;
+        }
+
+        .spec span {
+            display: block;
+
+            color: var(--gray);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           CARS
+        ========================================================= */
+
+        .cars {
+            background: #fff;
+        }
+
+        .cars-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .car-card {
+            overflow: hidden;
+
+            background: #fff;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            transition: var(--transition);
+        }
+
+        .car-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .car-card-image {
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .car-card-image img {
+            width: 100%;
+
+            height: 230px;
+
+            object-fit: cover;
+
+            transition: .5s ease;
+        }
+
+        .car-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .car-status {
+            position: absolute;
+
+            top: 14px;
+            left: 14px;
+
+            background: var(--green);
+
+            color: #fff;
+
+            padding: 6px 10px;
+
+            border-radius: 7px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            z-index: 2;
+        }
+
+        .car-card-content {
+            padding: 23px;
+        }
+
+        .car-card-content h3 {
+            margin-bottom: 7px;
+
+            font-size: 19px;
+        }
+
+        .car-card-content p {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+        }
+
+        .car-card-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+        .car-price {
+            font-weight: 900;
+
+            color: var(--primary);
+        }
+
+
+        /* =========================================================
+           ORDER
+        ========================================================= */
+
+        .order {
+            background: #f6f8fc;
+        }
+
+        .steps {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .step {
+            position: relative;
+
+            padding: 32px 24px;
+
+            background: #fff;
+
+            border-radius: var(--radius);
+
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 14px;
+
+            background: var(--primary);
+
+            color: #fff;
+
+            font-weight: 900;
+
+            font-size: 18px;
+
+            margin-bottom: 22px;
+        }
+
+        .step h3 {
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: var(--gray);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .cta {
+            padding: 80px 0;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(10,34,89,.97),
+                    rgba(21,87,255,.9)
+                ),
+                url("https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1800&q=80")
+                center / cover;
+
+            color: #fff;
+        }
+
+        .cta-content {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+        .cta h2 {
+            font-size: clamp(28px, 4vw, 42px);
+
+            line-height: 1.15;
+
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,.75);
+
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            background: #fff;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                .85fr 1.15fr;
+
+            gap: 35px;
+
+            align-items: stretch;
+        }
+
+        .contact-info {
+            padding: 40px;
+
+            border-radius: 22px;
+
+            background: #101828;
+
+            color: #fff;
+        }
+
+        .contact-info h2 {
+            font-size: 32px;
+
+            margin-bottom: 12px;
+        }
+
+        .contact-info > p {
+            color: rgba(255,255,255,.65);
+
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            margin-bottom: 22px;
+        }
+
+        .contact-item-icon {
+            flex-shrink: 0;
+
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 11px;
+
+            background: rgba(255,255,255,.08);
+
+            color: var(--accent);
+        }
+
+        .contact-item strong {
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 3px;
+        }
+
+        .contact-item span,
+        .contact-item a {
+            color: rgba(255,255,255,.7);
+
+            font-size: 13px;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+
+        .socials {
+            display: flex;
+
+            gap: 9px;
+
+            margin-top: 30px;
+        }
+
+        .social {
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.08);
+
+            transition: var(--transition);
+        }
+
+        .social:hover {
+            transform: translateY(-3px);
+        }
+
+        .social.instagram:hover {
+            background: #e1306c;
+        }
+
+        .social.telegram:hover {
+            background: var(--telegram);
+        }
+
+        .social.whatsapp:hover {
+            background: var(--green);
+        }
+
+        .contact-form {
+            padding: 40px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 22px;
+        }
+
+        .contact-form h3 {
+            font-size: 25px;
+
+            margin-bottom: 7px;
+        }
+
+        .contact-form > p {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .form-control {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            border-radius: 11px;
+
+            padding: 13px 14px;
+
+            outline: none;
+
+            font-size: 13px;
+
+            background: #fff;
+
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+
+            box-shadow:
+                0 0 0 4px rgba(21,87,255,.08);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #080d17;
+
+            color: #fff;
+
+            padding: 60px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.3fr 1fr 1fr 1fr;
+
+            gap: 40px;
+
+            padding-bottom: 45px;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+
+            color: rgba(255,255,255,.5);
+
+            font-size: 13px;
+
+            margin-top: 15px;
+        }
+
+        .footer-title {
+            font-size: 14px;
+
+            margin-bottom: 18px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255,255,255,.08);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: rgba(255,255,255,.4);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           WHATSAPP FLOAT
+        ========================================================= */
+
+        .whatsapp-float {
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            z-index: 999;
+
+            width: 60px;
+            height: 60px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            color: #fff;
+
+            font-size: 27px;
+
+            box-shadow:
+                0 10px 30px rgba(37,211,102,.35);
+
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform:
+                translateY(-4px)
+                scale(1.05);
+        }
+
+        .whatsapp-pulse {
+            position: absolute;
+
+            inset: -5px;
+
+            border: 2px solid var(--green);
+
+            border-radius: 50%;
+
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0% {
+                transform: scale(.9);
+                opacity: .8;
+            }
+
+            70% {
+                transform: scale(1.25);
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        .back-top {
+            position: fixed;
+
+            right: 25px;
+            bottom: 95px;
+
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 11px;
+
+            background: #fff;
+
+            color: var(--dark);
+
+            box-shadow: var(--shadow-md);
+
+            cursor: pointer;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(10px);
+
+            transition: var(--transition);
+
+            z-index: 998;
+        }
+
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           TOAST
+        ========================================================= */
+
+        .toast {
+            position: fixed;
+
+            left: 50%;
+            bottom: 30px;
+
+            transform:
+                translate(-50%, 100px);
+
+            padding: 14px 20px;
+
+            border-radius: 12px;
+
+            background: #101828;
+
+            color: #fff;
+
+            box-shadow: var(--shadow-lg);
+
+            z-index: 9999;
+
+            font-size: 13px;
+
+            opacity: 0;
+
+            transition: .35s ease;
+        }
+
+        .toast.show {
+            transform:
+                translate(-50%, 0);
+
+            opacity: 1;
+        }
+
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                .7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .nav {
+                gap: 18px;
+            }
+
+            .header-phone {
+                display: none;
+            }
+
+            .car-showcase {
+                gap: 35px;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        @media (max-width: 850px) {
+
+            .menu-btn {
+                display: grid;
+
+                place-items: center;
+            }
+
+            .nav {
+                position: absolute;
+
+                top: 82px;
+
+                left: 20px;
+                right: 20px;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                background: #fff;
+
+                border: 1px solid var(--border);
+
+                border-radius: 16px;
+
+                padding: 10px;
+
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav a {
+                padding: 13px 12px;
+
+                border-radius: 9px;
+            }
+
+            .nav a:hover {
+                background: var(--light);
+            }
+
+            .nav a::after {
+                display: none;
+            }
+
+            .header-actions .btn {
+                display: none;
+            }
+
+            .features-grid,
+            .cars-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .car-showcase,
+            .contact-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .steps {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .cta-content {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+
+        /* =========================================================
+           PHONE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width:
+                    min(
+                        calc(100% - 28px),
+                        1180px
+                    );
+            }
+
+            .header-inner {
+                height: 72px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .logo-icon {
+                width: 39px;
+                height: 39px;
+            }
+
+            .nav {
+                top: 72px;
+
+                left: 14px;
+                right: 14px;
+            }
+
+            .hero {
+                min-height: 700px;
+
+                padding-top: 72px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-stats {
+                gap: 25px;
+
+                margin-top: 40px;
+            }
+
+            .hero-stat strong {
+                font-size: 22px;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .section-header {
+                margin-bottom: 35px;
+            }
+
+            .features-grid,
+            .cars-grid,
+            .steps,
+            .specs {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .car-content h2 {
+                font-size: 35px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 27px 22px;
+            }
+
+            .form-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .back-top {
+                right: 20px;
+                bottom: 82px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     PRELOADER
+========================================================= -->
+
+<div class="preloader" id="preloader">
+
+    <div class="loader"></div>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header" id="header">
+
+    <div class="container header-inner">
+
+
+        <!-- LOGO -->
+
+        <a href="#home" class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-car-side"></i>
+            </div>
+
+            <div>
+                Encar<span>.tm</span><small>.avto</small>
+            </div>
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav" id="nav">
+
+            <a href="#home">
+                Главная
+            </a>
+
+            <a href="#changan">
+                Changan Uni-Z
+            </a>
+
+            <a href="#cars">
+                Автомобили
+            </a>
+
+            <a href="#order">
+                Как заказать
+            </a>
+
+            <a href="#contact">
+                Контакты
+            </a>
+
+        </nav>
+
+
+        <!-- ACTIONS -->
+
+        <div class="header-actions">
+
+
+            <a
+                class="header-phone"
+                href="tel:+996773935041"
+            >
+                <i class="fa-solid fa-phone"></i>
+
+                +996 773 935 041
+            </a>
+
+
+            <a
+                href="https://wa.me/996773935041"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp"
+            >
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp
+
+            </a>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Открыть меню"
+                type="button"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content reveal">
+
+
+            <div class="hero-badge">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Автомобили из Кореи и Китая
+
+            </div>
+
+
+            <h1>
+
+                Найдите свой
+
+                <span>
+                    идеальный автомобиль
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Продажа автомобилей, Changan Uni-Z
+                и заказ автомобилей напрямую из Южной Кореи.
+
+                Поможем подобрать автомобиль,
+                оформить покупку и организовать доставку.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="#cars"
+                    class="btn btn-primary"
+                >
+
+                    <i class="fa-solid fa-car"></i>
+
+                    Смотреть автомобили
+
+                </a>
+
+
+                <a
+                    href="#contact"
+                    class="btn btn-white"
+                >
+
+                    <i class="fa-solid fa-headset"></i>
+
+                    Получить консультацию
+
+                </a>
+
+
+            </div>
+
+
+            <div class="hero-stats">
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        100+
+                    </strong>
+
+                    <span>
+                        автомобилей
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        24/7
+                    </strong>
+
+                    <span>
+                        на связи
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        KR
+                    </strong>
+
+                    <span>
+                        прямые поставки
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="section features">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                Почему мы
+            </span>
+
+            <h2>
+                Покупка автомобиля
+                без лишних проблем
+            </h2>
+
+            <p>
+                Берём на себя подбор, проверку,
+                оформление и организацию доставки автомобиля.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h3>
+                    Проверенные автомобили
+                </h3>
+
+                <p>
+                    Помогаем проверить автомобиль
+                    перед покупкой и предоставляем
+                    информацию о его состоянии.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-tags"></i>
+                </div>
+
+                <h3>
+                    Прямые поставки
+                </h3>
+
+                <p>
+                    Работаем с поставщиками и площадками
+                    Южной Кореи для поиска подходящих автомобилей.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+
+                <h3>
+                    Поддержка клиента
+                </h3>
+
+                <p>
+                    Консультируем на всех этапах —
+                    от выбора автомобиля до его получения.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CHANGAN
+========================================================= -->
+
+<section class="section changan" id="changan">
+
+    <div class="container">
+
+
+        <div class="car-showcase">
+
+
+            <div class="car-image reveal">
+
+                <span class="car-badge">
+                    В наличии
+                </span>
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1400&q=85"
+                    alt="Changan Uni-Z"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="car-content reveal">
+
+
+                <span class="section-label">
+                    Главная модель
+                </span>
+
+
+                <h2>
+                    Changan Uni-Z
+                </h2>
+
+
+                <p>
+                    Современный кроссовер с выразительным дизайном,
+                    комфортным салоном и современными технологиями.
+                </p>
+
+
+                <div class="specs">
+
+
+                    <div class="spec">
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                        <div>
+
+                            <strong>
+                                Динамика
+                            </strong>
+
+                            <span>
+                                Современная силовая установка
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="spec">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                        <div>
+
+                            <strong>
+                                Электрификация
+                            </strong>
+
+                            <span>
+                                Гибридная версия
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="spec">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <div>
+
+                            <strong>
+                                5 мест
+                            </strong>
+
+                            <span>
+                                Просторный салон
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="spec">
+
+                        <i class="fa-solid fa-display"></i>
+
+                        <div>
+
+                            <strong>
+                                Мультимедиа
+                            </strong>
+
+                            <span>
+                                Современная система
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="hero-buttons">
+
+
+                    <a
+                        href="#contact"
+                        class="btn btn-primary"
+                    >
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Записаться на просмотр
+
+                    </a>
+
+
+                    <a
+                        href="https://wa.me/996773935041?text=Здравствуйте!%20Хочу%20узнать%20подробнее%20о%20Changan%20Uni-Z."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-whatsapp"
+                    >
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        Написать в WhatsApp
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CARS
+========================================================= -->
+
+<section class="section cars" id="cars">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                Каталог
+            </span>
+
+            <h2>
+                Автомобили
+            </h2>
+
+            <p>
+                Несколько популярных вариантов.
+                Также можем найти практически любую
+                модель по вашему запросу.
+            </p>
+
+        </div>
+
+
+        <div class="cars-grid">
+
+
+            <!-- CARD 1 -->
+
+            <article class="car-card reveal">
+
+
+                <div class="car-card-image">
+
+                    <span class="car-status">
+                        В наличии
+                    </span>
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1000&q=85"
+                        alt="Changan Uni-Z"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="car-card-content">
+
+                    <h3>
+                        Changan Uni-Z
+                    </h3>
+
+                    <p>
+                        Современный кроссовер
+                        для города и путешествий.
+                    </p>
+
+
+                    <div class="car-card-bottom">
+
+                        <div class="car-price">
+                            По запросу
+                        </div>
+
+
+                        <a
+                            href="#contact"
+                            class="btn btn-primary"
+                            style="padding:10px 14px;"
+                        >
+                            Подробнее
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- CARD 2 -->
+
+            <article class="car-card reveal">
+
+
+                <div class="car-card-image">
+
+                    <span class="car-status">
+                        Под заказ
+                    </span>
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=85"
+                        alt="Автомобили из Кореи"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="car-card-content">
+
+                    <h3>
+                        Автомобили из Кореи
+                    </h3>
+
+                    <p>
+                        Подберём автомобиль
+                        по бюджету и вашим требованиям.
+                    </p>
+
+
+                    <div class="car-card-bottom">
+
+                        <div class="car-price">
+                            По запросу
+                        </div>
+
+
+                        <a
+                            href="#contact"
+                            class="btn btn-primary"
+                            style="padding:10px 14px;"
+                        >
+                            Подобрать
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- CARD 3 -->
+
+            <article class="car-card reveal">
+
+
+                <div class="car-card-image">
+
+                    <span class="car-status">
+                        Под заказ
+                    </span>
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=85"
+                        alt="Автомобиль под заказ"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="car-card-content">
+
+                    <h3>
+                        Автомобиль под заказ
+                    </h3>
+
+                    <p>
+                        Найдём нужную марку,
+                        модель, год и комплектацию.
+                    </p>
+
+
+                    <div class="car-card-bottom">
+
+                        <div class="car-price">
+                            По запросу
+                        </div>
+
+
+                        <a
+                            href="#contact"
+                            class="btn btn-primary"
+                            style="padding:10px 14px;"
+                        >
+                            Оставить запрос
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ORDER
+========================================================= -->
+
+<section class="section order" id="order">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                Как это работает
+            </span>
+
+            <h2>
+                Заказ автомобиля из Кореи
+            </h2>
+
+            <p>
+                Всего несколько шагов от выбора автомобиля
+                до его получения.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>
+                    Вы выбираете
+                </h3>
+
+                <p>
+                    Сообщаете марку, модель, год,
+                    бюджет и желаемую комплектацию.
+                </p>
+
+            </div>
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>
+                    Мы ищем
+                </h3>
+
+                <p>
+                    Подбираем подходящие варианты
+                    и предоставляем информацию
+                    по автомобилям.
+                </p>
+
+            </div>
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Оформляем
+                </h3>
+
+                <p>
+                    Согласовываем автомобиль,
+                    стоимость и организуем необходимые документы.
+                </p>
+
+            </div>
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <h3>
+                    Вы получаете
+                </h3>
+
+                <p>
+                    Организуем доставку и сопровождаем
+                    процесс до получения автомобиля.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+
+        <div class="cta-content reveal">
+
+
+            <div>
+
+                <h2>
+                    Не нашли нужный автомобиль?
+                </h2>
+
+                <p>
+                    Отправьте нам марку и модель —
+                    мы попробуем найти подходящий вариант.
+                </p>
+
+            </div>
+
+
+            <div class="cta-buttons">
+
+
+                <a
+                    href="https://wa.me/996773935041?text=Здравствуйте!%20Хочу%20подобрать%20автомобиль."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-whatsapp"
+                >
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    WhatsApp
+
+                </a>
+
+
+                <a
+                    href="https://t.me/encar_tm_avto"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-white"
+                >
+
+                    <i class="fa-brands fa-telegram"></i>
+
+                    Telegram
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="section contact" id="contact">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+                Контакты
+            </span>
+
+            <h2>
+                Свяжитесь с нами
+            </h2>
+
+            <p>
+                Оставьте заявку или напишите нам
+                напрямую в WhatsApp.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFO -->
+
+            <div class="contact-info reveal">
+
+
+                <h2>
+                    Encar.tm.avto
+                </h2>
+
+
+                <p>
+                    Поможем подобрать и заказать автомобиль.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-item-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Адрес
+                        </strong>
+
+                        <span>
+                            Бишкек, Кыргызстан
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-item-icon">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Телефон
+                        </strong>
+
+                        <a href="tel:+996773935041">
+                            +996 773 935 041
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-item-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Email
+                        </strong>
+
+                        <a href="mailto:info@encar.tm.avto">
+                            info@encar.tm.avto
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-item-icon">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Время работы
+                        </strong>
+
+                        <span>
+                            Пн–Сб: 09:00–19:00<br>
+                            Вс: 10:00–17:00
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="socials">
+
+
+                    <a
+                        class="social instagram"
+                        href="https://instagram.com/encar.tm.avto"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a
+                        class="social telegram"
+                        href="https://t.me/encar_tm_avto"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Telegram"
+                    >
+
+                        <i class="fa-brands fa-telegram"></i>
+
+                    </a>
+
+
+                    <a
+                        class="social whatsapp"
+                        href="https://wa.me/996773935041"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                    >
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <div class="contact-form reveal">
+
+
+                <h3>
+                    Оставить заявку
+                </h3>
+
+
+                <p>
+                    Заполните форму —
+                    заявка откроется в WhatsApp.
+                </p>
+
+
+                <form id="contactForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Ваше имя *
+                            </label>
+
+                            <input
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="Например, Мердан"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Телефон *
+                            </label>
+
+                            <input
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                placeholder="+996..."
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="car">
+                                Какой автомобиль интересует?
+                            </label>
+
+                            <input
+                                class="form-control"
+                                id="car"
+                                name="car"
+                                type="text"
+                                placeholder="Например, Changan Uni-Z"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="message">
+                                Сообщение
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="message"
+                                name="message"
+                                placeholder="Напишите ваши пожелания..."
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary form-submit"
+                    >
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        Отправить заявку в WhatsApp
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+
+                <a href="#home" class="logo">
+
+                    <div class="logo-icon">
+
+                        <i class="fa-solid fa-car-side"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        Encar
+                        <span style="color:#fff;">
+                            .tm
+                        </span>
+
+                        <small>
+                            .avto
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <p>
+                    Продажа автомобилей и заказ
+                    автомобилей из Южной Кореи.
+                </p>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h4 class="footer-title">
+                    Навигация
+                </h4>
+
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#home">
+                            Главная
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#changan">
+                            Changan Uni-Z
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#cars">
+                            Автомобили
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#order">
+                            Как заказать
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h4 class="footer-title">
+                    Услуги
+                </h4>
+
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#contact">
+                            Продажа автомобилей
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Заказ из Кореи
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Подбор автомобиля
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Консультация
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h4 class="footer-title">
+                    Связаться
+                </h4>
+
+
+                <ul class="footer-links">
+
+                    <li>
+
+                        <a href="tel:+996773935041">
+                            +996 773 935 041
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="mailto:info@encar.tm.avto">
+                            info@encar.tm.avto
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="https://wa.me/996773935041"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WhatsApp
+                        </a>
+
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span>
+                Encar.tm.avto
+            </span>
+
+            <span>
+                Все права защищены.
+            </span>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     FLOATING WHATSAPP
+========================================================= -->
+
+<a
+    href="https://wa.me/996773935041"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Написать в WhatsApp"
+>
+
+    <span class="whatsapp-pulse"></span>
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="back-top"
+    id="backTop"
+    aria-label="Наверх"
+    type="button"
+>
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+    Заявка подготовлена
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   НАСТРОЙКИ САЙТА
+========================================================= */
+
+/*
+    ВАЖНО:
+
+    Номер WhatsApp указывается БЕЗ "+"
+    и без пробелов.
+
+    Ваш номер:
+
+    +996 773 935 041
+
+    Поэтому здесь:
+
+    996773935041
+*/
+
+const WHATSAPP_NUMBER = "996773935041";
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+window.addEventListener("load", function () {
+
+    const preloader =
+        document.getElementById("preloader");
+
+    setTimeout(function () {
+
+        preloader.classList.add("hide");
+
+    }, 400);
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const nav =
+    document.getElementById("nav");
+
+
+menuBtn.addEventListener("click", function () {
+
+    nav.classList.toggle("active");
+
+
+    const icon =
+        menuBtn.querySelector("i");
+
+
+    if (nav.classList.contains("active")) {
+
+        icon.classList.remove("fa-bars");
+
+        icon.classList.add("fa-xmark");
+
+    } else {
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* Закрытие мобильного меню */
+
+document
+    .querySelectorAll(".nav a")
+    .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            nav.classList.remove("active");
+
+
+            const icon =
+                menuBtn.querySelector("i");
+
+
+            icon.classList.remove("fa-xmark");
+
+            icon.classList.add("fa-bars");
+
+        });
+
+    });
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+const header =
+    document.getElementById("header");
+
+
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY > 20) {
+
+        header.classList.add("scrolled");
+
+    } else {
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backTop =
+    document.getElementById("backTop");
+
+
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY > 600) {
+
+        backTop.classList.add("show");
+
+    } else {
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+
+backTop.addEventListener("click", function () {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+
+/* =========================================================
+   ANIMATION ON SCROLL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach(function (element) {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   CONTACT FORM -> WHATSAPP
+========================================================= */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const toast =
+    document.getElementById("toast");
+
+
+contactForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const car =
+            document
+                .getElementById("car")
+                .value
+                .trim();
+
+
+        const message =
+            document
+                .getElementById("message")
+                .value
+                .trim();
+
+
+        /* Проверка */
+
+        if (!name || !phone) {
+
+            showToast(
+                "Заполните имя и телефон"
+            );
+
+            return;
+
+        }
+
+
+        /*
+            Формируем сообщение
+            для WhatsApp
+        */
+
+        let text =
+            "Здравствуйте! Я хочу оставить заявку.%0A%0A";
+
+
+        text +=
+            "Имя: " +
+            encodeURIComponent(name) +
+            "%0A";
+
+
+        text +=
+            "Телефон: " +
+            encodeURIComponent(phone);
+
+
+        if (car) {
+
+            text +=
+                "%0AАвтомобиль: " +
+                encodeURIComponent(car);
+
+        }
+
+
+        if (message) {
+
+            text +=
+                "%0AСообщение: " +
+                encodeURIComponent(message);
+
+        }
+
+
+        /*
+            Формируем WhatsApp URL
+        */
+
+        const whatsappURL =
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+            text;
+
+
+        showToast(
+            "Открываем WhatsApp..."
+        );
+
+
+        setTimeout(function () {
+
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        }, 500);
+
+
+        contactForm.reset();
+
+    }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer =
+        setTimeout(function () {
+
+            toast.classList.remove("show");
+
+        }, 3000);
+
+}
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   ESC — CLOSE MOBILE MENU
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            nav.classList.remove("active");
+
+
+            const icon =    
+                menuBtn.querySelector("i");
+
+
+            icon.classList.remove("fa-xmark");
+
+            icon.classList.add("fa-bars");
+
+        }
+
+    }
+);
+
+
+</script>
+
+</body>
+</html>
